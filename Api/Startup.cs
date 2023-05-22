@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Net;
 using System.Text.Json.Serialization;
 
@@ -92,6 +93,10 @@ namespace FluxoCaixa.Api
 
 			app.UseRouting();
 			app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+
+			var cultureinfo = new CultureInfo("pt-BR");
+			CultureInfo.DefaultThreadCurrentCulture = cultureinfo;
+			CultureInfo.DefaultThreadCurrentUICulture = cultureinfo;
 		}
 	}
 }

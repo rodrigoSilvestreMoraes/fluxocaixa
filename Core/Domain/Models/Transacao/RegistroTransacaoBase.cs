@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System.Text.Json.Serialization;
 
 namespace FluxoCaixa.Core.Domain.Models.Transacao
@@ -15,11 +16,19 @@ namespace FluxoCaixa.Core.Domain.Models.Transacao
 			}
 		}
 		public string Descricao { get; set; }
+
+		[BsonDateTimeOptions(Kind = DateTimeKind.Local)]
 		public DateTime DadaCadastro { get; set; } = DateTime.Now;
+
+		[BsonDateTimeOptions(Kind = DateTimeKind.Local)]
 		public DateTime DataAtualizacao { get; set; } = DateTime.Now;
+
+		[BsonDateTimeOptions(Kind = DateTimeKind.Local)]
 		public DateTime DataPagamento { get; set; }
 		public bool EstaAgendado { get; protected set; }
-		public StatusTransacao Status { get; protected set; } 
+		public StatusTransacao Status { get; protected set; }
+		
+		[BsonRepresentation(BsonType.Decimal128)]
 		public decimal Valor { get; set; }
 
 		protected void ProcessarStatus()

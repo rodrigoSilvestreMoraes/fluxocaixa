@@ -6,5 +6,7 @@ namespace FluxoCaixa.Core.Infra.Repository.Transacao
 	{
 		Task<RegistroDespesa> CriarDespesa(RegistroDespesa registroDespesa);
 		Task<RegistroReceita> CriarReceita(RegistroReceita registroReceita);
+
+		Task<decimal> TotalSaldoPorPeriodo(DateTime dataInicial, DateTime dataFinal, string collectionName);
 	}
 }

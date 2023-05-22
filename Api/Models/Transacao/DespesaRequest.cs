@@ -5,6 +5,8 @@ using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Annotations;
 using System.ComponentModel.DataAnnotations;
 
+using FluxoCaixa.Core.Infra.Extension;
+
 namespace FluxoCaixa.Api.Models.Transacao
 {
 	[SwaggerSchema(Required = new[] { "Payload para registro de despesas." })]
@@ -28,17 +30,12 @@ namespace FluxoCaixa.Api.Models.Transacao
 
 		public RegistroDespesa Mapping(IDominioService dominioService)
 		{
-			var dataPagamento = DataPagamento.Split('-');
-			var year = int.Parse(dataPagamento[0]);
-			var month = int.Parse(dataPagamento[1]);
-			var day = int.Parse(dataPagamento[2]);
-
 			return new RegistroDespesa(dominioService)
 			{
 				CodigoDespesa = Codigo,
 				Descricao = Descricao,
 				CodigoFornecedor = CodigoFornecedor,
-				DataPagamento = new DateTime(year, month, day),
+				DataPagamento = DataPagamento.DateTimeParse(),
 				Valor = Valor
 			};
 		}

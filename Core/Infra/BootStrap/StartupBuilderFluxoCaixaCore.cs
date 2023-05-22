@@ -1,5 +1,6 @@
 ﻿using FluxoCaixa.Core.Domain.ServiceBusiness.Dominios;
 using FluxoCaixa.Core.Domain.ServiceBusiness.RegistroFluxo;
+using FluxoCaixa.Core.Domain.ServiceBusiness.Relatorio;
 using FluxoCaixa.Core.Infra.CustomLog;
 using FluxoCaixa.Core.Infra.EventBus;
 using FluxoCaixa.Core.Infra.Mongo;
@@ -27,7 +28,8 @@ namespace FluxoCaixa.Core.Infra.BootStrap
 
 			services.AddSingleton<BackgroundWorkerQueue>();
 			services.AddSingleton<IRegistroFluxoService, RegistroFluxoService>();
-			services.AddSingleton<ICustomLogService, CustomLogService>();			
+			services.AddSingleton<ICustomLogService, CustomLogService>();
+			services.AddSingleton<IRelatorioService, RelatorioService>();
 
 			#endregion
 
