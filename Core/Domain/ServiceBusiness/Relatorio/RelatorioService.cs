@@ -14,6 +14,10 @@ namespace FluxoCaixa.Core.Domain.ServiceBusiness.Relatorio
 		}
 		public async Task<SaldoCaixa> GerarRelatorioFluxo(DateTime dataInicial, DateTime dataFinal)
 		{
+			var totalDays = (dataInicial.Date - dataFinal.Date).TotalDays;
+			if (totalDays > 0)
+				throw new InvalidOperationException("A data inicial não pode ser mario que a data final.");
+
 			var result = new SaldoCaixa(dataInicial, dataFinal);
 			result.TotalDespesas =  await _registroRepo.TotalSaldoPorPeriodo(dataInicial, dataFinal, RegistroDespesa._collectionName);
 			result.TotalReceitas = await _registroRepo.TotalSaldoPorPeriodo(dataInicial, dataFinal, RegistroReceita._collectionName);

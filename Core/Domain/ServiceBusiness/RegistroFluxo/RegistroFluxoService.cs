@@ -3,7 +3,6 @@ using FluxoCaixa.Core.Domain.Models.Transacao;
 using FluxoCaixa.Core.Infra.CustomLog;
 using FluxoCaixa.Core.Infra.Mongo;
 using FluxoCaixa.Core.Infra.Repository.Transacao;
-using System.Reflection;
 
 namespace FluxoCaixa.Core.Domain.ServiceBusiness.RegistroFluxo
 {

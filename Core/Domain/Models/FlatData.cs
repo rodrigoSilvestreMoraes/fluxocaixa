@@ -1,8 +1,10 @@
 ﻿using MongoDB.Bson;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 
 namespace FluxoCaixa.Core.Domain.Models
 {
+	[ExcludeFromCodeCoverage]
 	public class FlatData
 	{
 		[JsonIgnore]

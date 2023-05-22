@@ -1,8 +1,12 @@
-﻿namespace FluxoCaixa.Core.Domain.Models.CustomLog
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace FluxoCaixa.Core.Domain.Models.CustomLog
 {
 	/// <summary>
 	/// Estou usando um modelo simples, mas poderia adotar modelos de mercado, como Gelf do graylog
 	/// </summary>
+
+	[ExcludeFromCodeCoverage]
 	public class LogDetail
 	{
 		public const string _collectionName = "CustomLog";

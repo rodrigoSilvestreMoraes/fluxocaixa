@@ -1,5 +1,8 @@
-﻿namespace FluxoCaixa.Core.Infra.Extension
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace FluxoCaixa.Core.Infra.Extension
 {
+	[ExcludeFromCodeCoverage]
 	public static class DateTimeExtension
 	{
 		public static DateTime DateTimeParse(this string dateTime) 
