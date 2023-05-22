@@ -1,6 +1,9 @@
 ﻿using FluxoCaixa.Core.Domain.ServiceBusiness.Dominios;
 using FluxoCaixa.Core.Domain.ServiceBusiness.RegistroFluxo;
+using FluxoCaixa.Core.Infra.CustomLog;
+using FluxoCaixa.Core.Infra.EventBus;
 using FluxoCaixa.Core.Infra.Mongo;
+using FluxoCaixa.Core.Infra.Repository.CustomLog;
 using FluxoCaixa.Core.Infra.Repository.Dominio;
 using FluxoCaixa.Core.Infra.Repository.Transacao;
 using Microsoft.Extensions.Configuration;
@@ -20,10 +23,11 @@ namespace FluxoCaixa.Core.Infra.BootStrap
 
 		public static IServiceCollection BuildServices(IServiceCollection services, IConfiguration _configuration)
 		{
-
 			#region Services
 
+			services.AddSingleton<BackgroundWorkerQueue>();
 			services.AddSingleton<IRegistroFluxoService, RegistroFluxoService>();
+			services.AddSingleton<ICustomLogService, CustomLogService>();			
 
 			#endregion
 
@@ -41,6 +45,7 @@ namespace FluxoCaixa.Core.Infra.BootStrap
 			
 			services.AddSingleton<IDominioService>(x => new DominiosRepo(mongoClient: _mongoConfig));
 			services.AddSingleton<IRegistroRepo>(x => new RegistroRepo(mongoClient: _mongoConfig));
+			services.AddSingleton<ICustomLogRepo>(x => new CustomLogRepo(mongoClient: _mongoConfig, x.GetRequiredService<BackgroundWorkerQueue>()));			
 
 			#endregion
 
@@ -49,7 +54,6 @@ namespace FluxoCaixa.Core.Infra.BootStrap
 
 		static IConfiguration ConfigureSettings(IConfiguration _configuration)
 		{
-
 			return _configuration;
 		}
 	}

@@ -8,10 +8,10 @@
 
   <ItemGroup>
     <Folder Include="Domain\Models\Relatorio\" />
-    <Folder Include="Infra\EventBus\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
     <PackageReference Include="MongoDB.Bson" Version="2.19.1" />

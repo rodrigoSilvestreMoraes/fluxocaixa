@@ -1,6 +1,8 @@
 ﻿using FluxoCaixa.Api.Filters;
+using FluxoCaixa.Api.Host;
 using FluxoCaixa.Api.Models;
 using FluxoCaixa.Core.Infra.BootStrap;
+using FluxoCaixa.Core.Infra.EventBus;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
@@ -30,10 +32,11 @@ namespace FluxoCaixa.Api
 			services.AddMvcCore().AddApiExplorer();
 			services.AddMvcCore().AddControllersAsServices();
 			
-			Configuration = StartupBuilderFluxoCaixaCore.BuildSettings(Configuration);
-			
+			Configuration = StartupBuilderFluxoCaixaCore.BuildSettings(Configuration);			
 			services = StartupBuilderFluxoCaixaCore.BuildServices(services, Configuration);
-			
+		
+			services.AddHostedService<EventQueueService>();
+
 			services.AddControllersWithViews()
 				.AddJsonOptions(options =>
 				options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
