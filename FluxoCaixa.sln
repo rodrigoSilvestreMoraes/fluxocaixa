@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluxoCaixa.Core", "Core\FluxoCaixa.Core.csproj", "{6DD2BD40-6EBD-476D-959C-C88996086ACC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E828A67E-93A0-46DC-A55C-BE9E106EF57E}"
+	ProjectSection(SolutionItems) = preProject
+		Api\FluxoCaixa.Api\appsettings.Development.json = Api\FluxoCaixa.Api\appsettings.Development.json
+		Api\FluxoCaixa.Api\appsettings.json = Api\FluxoCaixa.Api\appsettings.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{D84548BC-8C84-478A-BBAA-219C4F1A96E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{98ABA1FB-86DA-4F9D-ACF6-7C3E73210E56}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluxoCaixa.Api", "Api\FluxoCaixa.Api\FluxoCaixa.Api.csproj", "{878E49D4-259B-4E48-AB8E-7B0E37B60B07}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6DD2BD40-6EBD-476D-959C-C88996086ACC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DD2BD40-6EBD-476D-959C-C88996086ACC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DD2BD40-6EBD-476D-959C-C88996086ACC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DD2BD40-6EBD-476D-959C-C88996086ACC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{878E49D4-259B-4E48-AB8E-7B0E37B60B07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{878E49D4-259B-4E48-AB8E-7B0E37B60B07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{878E49D4-259B-4E48-AB8E-7B0E37B60B07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{878E49D4-259B-4E48-AB8E-7B0E37B60B07}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6DD2BD40-6EBD-476D-959C-C88996086ACC} = {E828A67E-93A0-46DC-A55C-BE9E106EF57E}
+		{878E49D4-259B-4E48-AB8E-7B0E37B60B07} = {D84548BC-8C84-478A-BBAA-219C4F1A96E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC2E66AC-BA94-46C5-BE2F-E718327F353B}
+	EndGlobalSection
+EndGlobal
