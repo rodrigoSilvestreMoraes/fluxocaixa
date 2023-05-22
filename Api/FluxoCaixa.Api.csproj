@@ -13,7 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\FluxoCaixa.Core.csproj" />
+    <ProjectReference Include="..\Core\FluxoCaixa.Core.csproj" />
   </ItemGroup>
+
+  
 
 </Project>
