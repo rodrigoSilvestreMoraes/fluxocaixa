@@ -45,3 +45,4 @@ Utilize os exemplos de comando localizado no arquivo **Coverage.bat**.
 
 ## Diagrama simples mostrando a arquitetura do projeto:
 
+![enter image description here](https://github.com/rodrigoSilvestreMoraes/fluxocaixa/blob/main/Diagrama.png)
