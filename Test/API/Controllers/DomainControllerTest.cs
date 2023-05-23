@@ -1,12 +1,117 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluxoCaixa.Api.Controllers;
+using FluxoCaixa.Core.Domain.ServiceBusiness.Dominios;
+using FluxoCaixa.Test.Stubs;
+using Microsoft.AspNetCore.Mvc;
+using Moq;
+using System.Net;
 
 namespace FluxoCaixa.Test.API.Controllers
 {
-	internal class DomainControllerTest
+	public class DomainControllerTest
 	{
+		readonly Mock<IDominioService> _dominioService;
+		public DomainControllerTest()
+		{
+			_dominioService = new Mock<IDominioService>();
+		}
+
+		[Fact]
+		public async void Deveria_ConsultarTodosClientes()
+		{
+			_dominioService.Setup(x => x.ListarClientes()).Returns(Task.FromResult(ClienteViewMock.Listar()));
+
+			var callResult = await GetController().ConsultarTodosClientes();
+			var result = callResult as ObjectResult;
+
+			Assert.IsType<ObjectResult>(result);
+			Assert.Equal((int)HttpStatusCode.OK, result.StatusCode.Value);
+		}
+
+		[Fact]
+		public async void Nao_Deveria_ConsultarTodosClientes()
+		{
+			_dominioService.Setup(x => x.ListarClientes()).Returns(Task.FromResult(new List<FluxoCaixa.Core.Domain.Models.Cliente.ClienteView>()));
+
+			var callResult = await GetController().ConsultarTodosClientes();
+			var result = callResult as ObjectResult;
+
+			Assert.IsType<ObjectResult>(result);
+			Assert.Equal((int)HttpStatusCode.NotFound, result.StatusCode.Value);
+		}
+
+
+		[Fact]
+		public async void Deveria_ConsultarTodosFornecedores()
+		{
+			_dominioService.Setup(x => x.ListarFornecedores()).Returns(Task.FromResult(FornecedorViewMock.Listar()));
+
+			var callResult = await GetController().ConsultarTodosFornecedores();
+			var result = callResult as ObjectResult;
+
+			Assert.IsType<ObjectResult>(result);
+			Assert.Equal((int)HttpStatusCode.OK, result.StatusCode.Value);
+		}
+
+		[Fact]
+		public async void Nao_Deveria_ConsultarTodosFornecedores()
+		{
+			_dominioService.Setup(x => x.ListarFornecedores()).Returns(Task.FromResult(new List<FluxoCaixa.Core.Domain.Models.Fornecedore.FornecedorView>()));
+
+			var callResult = await GetController().ConsultarTodosFornecedores();
+			var result = callResult as ObjectResult;
+
+			Assert.IsType<ObjectResult>(result);
+			Assert.Equal((int)HttpStatusCode.NotFound, result.StatusCode.Value);
+		}
+
+		[Fact]
+		public async void Deveria_ConsultarTodasDespesas()
+		{
+			_dominioService.Setup(x => x.ListarDespesas()).Returns(Task.FromResult(DespesaViewMock.Listar()));
+
+			var callResult = await GetController().ConsultarTodasDespesas();
+			var result = callResult as ObjectResult;
+
+			Assert.IsType<ObjectResult>(result);
+			Assert.Equal((int)HttpStatusCode.OK, result.StatusCode.Value);
+		}
+
+		[Fact]
+		public async void Nao_Deveria_ConsultarTodasDespesas()
+		{
+			_dominioService.Setup(x => x.ListarDespesas()).Returns(Task.FromResult(new List<FluxoCaixa.Core.Domain.Models.Despesa.DespesaView>()));
+
+			var callResult = await GetController().ConsultarTodasDespesas();
+			var result = callResult as ObjectResult;
+
+			Assert.IsType<ObjectResult>(result);
+			Assert.Equal((int)HttpStatusCode.NotFound, result.StatusCode.Value);
+		}
+
+		[Fact]
+		public async void Deveria_ConsultarTodasReceitas()
+		{
+			_dominioService.Setup(x => x.ListarReceitas()).Returns(Task.FromResult(ReceitaViewMock.Listar()));
+
+			var callResult = await GetController().ConsultarTodasReceitas();
+			var result = callResult as ObjectResult;
+
+			Assert.IsType<ObjectResult>(result);
+			Assert.Equal((int)HttpStatusCode.OK, result.StatusCode.Value);
+		}
+
+		[Fact]
+		public async void Nao_Deveria_ConsultarTodasReceitas()
+		{
+			_dominioService.Setup(x => x.ListarReceitas()).Returns(Task.FromResult(new List<FluxoCaixa.Core.Domain.Models.Receita.ReceitaView>()));
+
+			var callResult = await GetController().ConsultarTodasReceitas();
+			var result = callResult as ObjectResult;
+
+			Assert.IsType<ObjectResult>(result);
+			Assert.Equal((int)HttpStatusCode.NotFound, result.StatusCode.Value);
+		}
+
+		DomainController GetController() => new DomainController(_dominioService.Object);
 	}
 }
