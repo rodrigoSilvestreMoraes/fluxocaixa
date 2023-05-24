@@ -2,7 +2,7 @@
 
 Projeto para avaliação no cliente Banco Carrefour, aplicação baseada em API Rest usando banco de dados Mongo.
 Contém uma ideia de envio de eventos para um simulador de Service Bus para geração de log.
-Projeto contém uma parte das melhores práticas.
+Projeto contém o uso de boas práticas no que coube ser implementado.
 Realizei o mesmo em um total de 12 horas, então é bem provável que tenha ajustes e pontos a serem melhorados, mas a ideia era passar embasamento técnico para conseguir realizar uma possível entrevista.
 Peço a gentileza que rodem a aplicação e analisem todo o código.
 
@@ -29,6 +29,7 @@ Com Visual Studio 2022 e dotnet core **versão 6.0.404** instalado na máquina, 
 
  1. API Rest utilizando swagger para demostrar o uso das rotas.
  2. As operações podem ser construídas utilizando o próprio swagger e o retorno das rotas de domínio. 
+ 3. Para acessar o healthcheck da api execute a rota: http://localhost:5227/health
 
 ## Rodando a cobertura de teste unitário e gerando relatório de cobertura:
 
