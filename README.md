@@ -29,6 +29,7 @@ Com Visual Studio 2022 e dotnet core **versão 6.0.404** instalado na máquina, 
 
  1. API Rest utilizando swagger para demostrar o uso das rotas.
  2. As operações podem ser construídas utilizando o próprio swagger e o retorno das rotas de domínio. 
+ 3. Para acessar o healthcheck da api execute a rota: http://localhost:5227/health
 
 ## Rodando a cobertura de teste unitário e gerando relatório de cobertura:
 
