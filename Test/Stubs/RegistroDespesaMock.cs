@@ -9,11 +9,9 @@ namespace FluxoCaixa.Test.Stubs
 	{
 		public static RegistroDespesa MockRegistroDespesa(Mock<IDominioService> dominioService)
 		{
-			return new RegistroDespesa(dominioService.Object)
+			return new RegistroDespesa(dominioService.Object, codigoDespesa: "dsdsdsds", codigoFornecedor: "dsdsdsd")
 			{
 				 Id = ObjectId.GenerateNewId(),
-				 CodigoDespesa = "dsdsdsd",
-				 CodigoFornecedor = "dsdsdsds",
 				 DataPagamento = DateTime.Now.AddDays(4),
 				 Descricao = "teste",
 				 Valor = 100				 

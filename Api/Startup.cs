@@ -2,7 +2,6 @@
 using FluxoCaixa.Api.Host;
 using FluxoCaixa.Api.Models;
 using FluxoCaixa.Core.Infra.BootStrap;
-using FluxoCaixa.Core.Infra.EventBus;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
@@ -10,6 +9,8 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Net;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using System.Net.Mime;
 
 namespace FluxoCaixa.Api
 {
@@ -35,7 +36,9 @@ namespace FluxoCaixa.Api
 			
 			Configuration = StartupBuilderFluxoCaixaCore.BuildSettings(Configuration);			
 			services = StartupBuilderFluxoCaixaCore.BuildServices(services, Configuration);
-		
+
+			services.AddHealthChecks();
+
 			services.AddHostedService<EventQueueService>();
 
 			services.AddControllersWithViews()
@@ -66,6 +69,22 @@ namespace FluxoCaixa.Api
 				app.UseDeveloperExceptionPage();
 			}
 
+			app.UseHealthChecks("/health",
+				new HealthCheckOptions()
+				{
+					ResponseWriter = async (context, report) =>
+					{
+						var result = new
+							{
+								currentTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+								statusApplication = report.Status.ToString(),
+							};
+
+						context.Response.ContentType = MediaTypeNames.Application.Json;
+						await context.Response.WriteAsync(JsonConvert.SerializeObject(result));
+					}
+				});
+
 			app.UseExceptionHandler(a => a.Run(async context =>
 			{
 				var exceptionHandlerPathFeature = context.Features.Get<IExceptionHandlerPathFeature>();
@@ -92,7 +111,8 @@ namespace FluxoCaixa.Api
 			});
 
 			app.UseRouting();
-			app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+			app.UseEndpoints(endpoints => { endpoints.MapControllers(); });			
+	
 
 			var cultureinfo = new CultureInfo("pt-BR");
 			CultureInfo.DefaultThreadCurrentCulture = cultureinfo;

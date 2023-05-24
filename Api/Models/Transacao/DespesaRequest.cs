@@ -30,11 +30,9 @@ namespace FluxoCaixa.Api.Models.Transacao
 
 		public RegistroDespesa Mapping(IDominioService dominioService)
 		{
-			return new RegistroDespesa(dominioService)
+			return new RegistroDespesa(dominioService, Codigo, CodigoFornecedor)
 			{
-				CodigoDespesa = Codigo,
 				Descricao = Descricao,
-				CodigoFornecedor = CodigoFornecedor,
 				DataPagamento = DataPagamento.DateTimeParse(),
 				Valor = Valor
 			};

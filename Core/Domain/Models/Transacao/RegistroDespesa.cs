@@ -6,8 +6,10 @@ namespace FluxoCaixa.Core.Domain.Models.Transacao
 	{
 		readonly IDominioService _dominioService;
 		public const string _collectionName = "RegistroDespesas";
-		public RegistroDespesa(IDominioService dominioService) 
+		public RegistroDespesa(IDominioService dominioService, string codigoDespesa, string codigoFornecedor) 
 		{ 
+			this.CodigoDespesa = codigoDespesa;
+			this.CodigoFornecedor = codigoFornecedor;	
 			_dominioService	= dominioService;
 		}
 		public string CodigoDespesa { get;set; }

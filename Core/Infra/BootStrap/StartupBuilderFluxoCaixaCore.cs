@@ -49,7 +49,7 @@ namespace FluxoCaixa.Core.Infra.BootStrap
 			services.AddSingleton<IRegistroRepo>(x => new RegistroRepo(mongoClient: _mongoConfig));
 			services.AddSingleton<ICustomLogRepo>(x => new CustomLogRepo(mongoClient: _mongoConfig, x.GetRequiredService<BackgroundWorkerQueue>()));			
 
-			#endregion
+			#endregion			
 
 			return services;
 		}

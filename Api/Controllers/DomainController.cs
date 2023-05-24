@@ -21,7 +21,7 @@ namespace FluxoCaixa.Api.Controllers
 			_dominioService = dominioService;
 		}
 
-		[HttpGet("clientes/todos")]
+		[HttpGet("clientes")]
 		[SwaggerOperation(
 		Summary = "Lista todos os Clientes.",
 		Description = "Permite a consulta de todos os clientes disponíveis.",
@@ -37,7 +37,7 @@ namespace FluxoCaixa.Api.Controllers
 			return StatusCode(StatusCodes.Status200OK, resultOperation);
 		}
 
-		[HttpGet("fornecedores/todos")]
+		[HttpGet("fornecedores")]
 		[SwaggerOperation(
 		Summary = "Lista todos os Fornecedores.",
 		Description = "Permite a consulta de todos os fornecedores disponíveis.",
@@ -53,7 +53,7 @@ namespace FluxoCaixa.Api.Controllers
 			return StatusCode(StatusCodes.Status200OK, resultOperation);
 		}
 
-		[HttpGet("despesas/todas")]
+		[HttpGet("despesas")]
 		[SwaggerOperation(
 		Summary = "Lista todas as Despesas.",
 		Description = "Permite a consulta de todas as despesas disponíveis.",
@@ -69,7 +69,7 @@ namespace FluxoCaixa.Api.Controllers
 			return StatusCode(StatusCodes.Status200OK, resultOperation);
 		}
 
-		[HttpGet("receitas/todas")]
+		[HttpGet("receitas")]
 		[SwaggerOperation(
 		Summary = "Lista todas as Receitas.",
 		Description = "Permite a consulta de todas as receitas disponíveis.",

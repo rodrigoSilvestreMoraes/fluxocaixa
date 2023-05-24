@@ -16,7 +16,7 @@ namespace FluxoCaixa.Core.Domain.ServiceBusiness.Relatorio
 		{
 			var totalDays = (dataInicial.Date - dataFinal.Date).TotalDays;
 			if (totalDays > 0)
-				throw new InvalidOperationException("A data inicial não pode ser mario que a data final.");
+				throw new InvalidOperationException("A data inicial não pode ser maior que a data final.");
 
 			var result = new SaldoCaixa(dataInicial, dataFinal);
 			result.TotalDespesas =  await _registroRepo.TotalSaldoPorPeriodo(dataInicial, dataFinal, RegistroDespesa._collectionName);
